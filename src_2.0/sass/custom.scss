@@ -1,0 +1,81 @@
+// Custom Variables --------
+
+// Mixings --------
+
+// Main Styles --------
+header {
+    position: relative;
+    nav {
+        box-shadow: 0px 3px 5px #000;
+        .logo {
+            width: 80px;
+        }
+
+        // Settings User
+        #user-settings{
+            left: -68px;
+
+            .figure-list {
+                z-index: -1;
+                background: #fff;
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                top: -11px;
+                right: 23px;
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+    // Nav Menu fixed ---------
+    .menu-fixed {        
+        position: fixed;
+        z-index: 101;
+        top: 0;
+        left: 0;
+        width: 100%;
+        box-shadow: 0px 3px 5px #000;
+    }
+}
+// General Container ----
+.parallax {
+	position: fixed;
+	top: 0;	
+	transform: translate3d(0, 0, 0);	
+	transform-style: preserve-3d;
+	width: 100%;
+	
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.parallax__container {
+	clip: rect(0, auto, auto, 0);
+	height: 100%;
+	left: 0;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: -100;
+}
+
+// Slide main -------
+.slide-fixed {
+    padding-top: 5em;
+}
+
+#controles {
+    width: 8%;
+    font-size: 28px;
+    color: #222;
+}
+
+// Pestaña activa
+.active-tab {
+    border-bottom: solid 5px #fff;    
+}
+
+// Imports ----------
+@import"../node_modules/bootstrap/scss/bootstrap.scss";
