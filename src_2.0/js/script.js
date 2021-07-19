@@ -1,8 +1,4 @@
 window.onload = function(){
-	//$("#general-container").load("home.html");
-	// $("#general-container").fadeOut(200,function(){
-	// 	$(this).load("home.php").fadeIn(1000);
-	// })
 	$("#loader").removeClass("loader");	
 	$("#loader").fadeOut();
 	$("body").removeClass("overflow-hidden");

@@ -1,6 +1,6 @@
 <?php
 	
-	include_once "includes/connect.php";
+	include_once "../includes/connect.php";
 
 	$connect = new ConnectionDB();
 	$conn = $connect->iniciarDB();
@@ -10,7 +10,7 @@
 
 	// Dashboard - Inicio
 	if ($go == "bar") {
-		$query = "SELECT month(fnacimiento) as Mes, COUNT(idsocios) as Cantidad FROM socios GROUP BY month(fnacimiento)";
+		$query = "SELECT * FROM lista_socio_tipo";
 		$res = $conn->query($query);
 		$row = array();
 		while($data = $res->fetch_array(PDO::FETCH_ASSOC)){
@@ -20,7 +20,17 @@
 	}
 
 	if ($go == "pie") {
-		$query = "SELECT (SELECT tm_nombre FROM tipo_maquinaria WHERE tm_id = id_tipo_maquinaria_FK), COUNT(mac_id) AS Total FROM maquinarias GROUP BY id_tipo_maquinaria_FK";
+		$query = "SELECT * FROM lista_tractor_modelo";
+		$res = $conn->query($query);
+		$row = array();
+		while($data = $res->fetch_array(PDO::FETCH_ASSOC)){
+			$row [] = $data;
+		}
+		print_r(json_encode($row));
+	}
+
+	if ($go == "semi-c") {
+		$query = "SELECT * FROM lista_bovino_raza";
 		$res = $conn->query($query);
 		$row = array();
 		while($data = $res->fetch_array(PDO::FETCH_ASSOC)){

@@ -1,37 +1,18 @@
-<?php
-  include_once "../includes/connect.php";
+// Dashboard - Barras 
 
-  $connect = new ConnectionDB();
-  $conn = $connect->iniciarDB();
-
-  $queryC = "SELECT * FROM socios";
-  $resC = $conn->query($queryC);
-  $cantidad = mysqli_num_rows($resC);
-?>
-
-<!-- Styles -->
-<style>
-.chartdiv {
-  width: 100%;
-  height: 20rem;
-}
-</style>
-
-<!-- Chart code -->
-
-<!-- Barras -->
-<script>
-
-  am4core.ready(function() {
+am4core.ready(function() {
 
 // Themes begin
 am4core.useTheme(am4themes_animated);
+am4core.useTheme(am4themes_dark);
 // Themes end
 
-var chart = am4core.create("chartdiv2", am4charts.XYChart);
+var chart = am4core.create("dash-bar", am4charts.XYChart);
 chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
-let url = "http://127.0.0.1/web/crud_ajax2/api.php?go=bar";
+// Data
+
+let url = "http://127.0.0.1/web/src_2.0/api/api.php?go=bar";
 fetch(url)
   .then(response=>response.json())
   .then(datos=>mostrar(datos))
@@ -50,11 +31,11 @@ var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
 categoryAxis.renderer.grid.template.location = 0;
 categoryAxis.dataFields.category = "0";
 categoryAxis.renderer.minGridDistance = 40;
-categoryAxis.fontSize = 11;
+categoryAxis.fontSize = 15;
 
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.min = 0;
-valueAxis.max = 100;
+valueAxis.max = 10;
 valueAxis.strictMinMax = true;
 valueAxis.renderer.minGridDistance = 30;
 // axis break
@@ -104,13 +85,3 @@ series.columns.template.adapter.add("fill", function(fill, target) {
 });
 
 }); // end am4core.ready()
-
-</script>
-
-<!-- HTML -->
-<div class="row">
-  <div class="col-xl-6 my-3">
-    <h2>BARs</h2>
-    <div id="chartdiv" class="chartdiv"></div>
-  </div>
-</div>

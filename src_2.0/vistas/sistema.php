@@ -11,32 +11,32 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../fontawesome/css/all.min.css">
     <!-- Boxicons CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'> -->
 </head>
-<body>
+<body onload="init()">
     <div class="sidebar">
         <div class="logo-details">
             <i class="fas fa-building icon"></i>
             <div class="ms-2 logo_name">ASPAAH</div>
-            <i class='bx bx-menu' id="btn" ></i>
+            <i class='fas fa-bars' id="btn" ></i>
         </div>
         <ul class="nav-list navbar-nav">
             <li>
-                <a class="tab-s active" href="#">
+                <a class="tab-s active" onclick="return linkTab(this.href)" href="sistema.php">
                     <i class="fas fa-home"></i>
                     <span class="links_name">Inicio</span>
                 </a>
                 <span class="tooltip">Inicio</span>
             </li>
             <li>
-                <a class="tab-s" href="#">
+                <a class="tab-s" onclick="return linkTab(this.href)" href="sistema.php">
                     <i class="fas fa-chart-pie"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
             <li>
-                <a class="tab-s" href="#">
+                <a class="tab-s" onclick="return linkTab(this.href)" href="sistema/socios.php">
                     <i class="fas fa-user"></i>
                     <span class="links_name">Socios</span>
                 </a>
@@ -73,65 +73,38 @@
         </ul>
     </div>
     <section class="home-section">
-        <div id="page-princ">
-            <div class="m-4 conatiner_inicio">
-                <div class="d-flex justify-content-end align-items-center bg-info p-3 text-white content-user mb-2">
-                    <div class="text-end">
-                        <h5 class="m-0">Name - Admin</h5>
-                        <p class="m-0">Cargo - Tipo</p>
-                    </div>
-                    <i class="mx-3 fas fa-user-circle"></i>
-                    <a class="ms-3 text-white exit" href="#" title="Salir"><i class="fas fa-sign-out-alt"></i></a>
-                </div>
-                <div class="d-flex justify-content-between my-4">
-                    <h2>UX/UI Socios</h2>
-                    <div>
-                        <a class="py-2 mx-2 btn rounded-pill btn-outline-primary" href="">+ Registrar nuevo socio</a>
-                        <a class="py-2 mx-2 btn rounded-pill btn-primary" href="">+ Registrar nuevo socio</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 my-2">
-                        <div class="indicators bg-info text-white d-flex align-items-center p-3">
-                            <i class="fs-1 fas fa-user-circle"></i>
-                            <div class="ms-3">
-                                <h3>251</h3>
-                                <p class="m-0">Socios</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 my-2">
-                        <div class="indicators bg-info text-white d-flex align-items-center p-3">
-                            <i class="fs-1 fas fa-user-circle"></i>
-                            <div class="ms-3">
-                                <h3>251</h3>
-                                <p class="m-0">Socios</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 my-2">
-                        <div class="indicators bg-info text-white d-flex align-items-center p-3">
-                            <i class="fs-1 fas fa-user-circle"></i>
-                            <div class="ms-3">
-                                <h3>251</h3>
-                                <p class="m-0">Socios</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 my-2">
-                        <div class="indicators bg-info text-white d-flex align-items-center p-3">
-                            <i class="fs-1 fas fa-user-circle"></i>
-                            <div class="ms-3">
-                                <h3>251</h3>
-                                <p class="m-0">Socios</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="conatiner-fluid p-0 m-4                                 ">
+        <div class="d-flex justify-content-end align-items-center bg-info p-3 text-white content-user mb-2">
+            <div class="text-end">
+                <h5 class="m-0">Name - Admin</h5>
+                <p class="m-0">Cargo - Tipo</p>
+            </div>
+            <i class="mx-3 fas fa-user-circle"></i>
+            <a class="ms-3 text-white exit" href="#" title="Salir"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+            <div id="page-princ">
+            
             </div>
         </div>
     </section>
     <!-- Scripts -->
+    <!-- JQuery -->
+    <script src="../node_modules/jquery/dist/jquery.min.js""></script>
+    <!-- My script -->
     <script src="../js/sistema.js"></script>
+    <script>
+        // Pages ---
+        function linkTab(tab) {	
+            $("#page-princ").fadeOut(200,function(){
+                $(this).load(tab).fadeIn(1000);
+            });
+            return false;
+        }
+    </script>
+    <!-- Resources -->
+    <script src="../resources/amcharts4/core.js"></script>
+    <script src="../resources/amcharts4/charts.js"></script>
+    <script src="../resources/amcharts4/themes/animated.js"></script>
+    <script src="../resources/amcharts4/themes/dark.js"></script>
 </body>
 </html>
